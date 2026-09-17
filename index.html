@@ -1,1 +1,51 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASF Sono — Sono e recuperação para surfar melhor | ASF</title><meta name="description" content="Rastreador de sono e recuperação para surfistas: registre suas noites e veja como o sono afeta sua performance no mar. Satélite do app ASF."><link rel="canonical" href="https://acarolmourad-commits.github.io/asf-sono/"><meta name="theme-color" content="#00A8CC"><style>:root{--p:#00A8CC;--d:#0E2439;--u:#9B59B6;--bg:#F7FBFC;--g:#5A6B7A}*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--d)}nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #E5EEF2;padding:10px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}nav a{color:var(--p);text-decoration:none;font-weight:700;font-size:13px}nav a.on{color:var(--u)}header{background:linear-gradient(135deg,#0E2439,var(--u));color:#fff;padding:40px 20px 30px;text-align:center}.wrap{max-width:640px;margin:0 auto;padding:24px 16px 60px}.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(14,36,57,.06)}.card h2{font-size:15.5px;margin-bottom:8px}.row{display:flex;gap:10px;align-items:center}input[type=number],select{padding:9px;border:2px solid var(--p);border-radius:10px;font-size:15px;width:90px}button.salvar{background:linear-gradient(135deg,var(--p),var(--u));color:#fff;border:0;padding:10px 18px;border-radius:999px;font-weight:700;cursor:pointer}.bars{display:flex;gap:6px;align-items:flex-end;height:80px;margin-top:10px}.bars div{flex:1;background:linear-gradient(180deg,var(--p),var(--u));border-radius:4px 4px 0 0;min-height:4px}.muted{color:var(--g);font-size:12.5px}footer{text-align:center;font-size:12.5px;color:var(--g);padding:24px;border-top:1px solid #E5EEF2}</style></head><body><nav><a href="https://acarolmourad-commits.github.io/asf-app/">🏄 App</a><a class="on" href="https://acarolmourad-commits.github.io/asf-sono/">😴 Sono</a><a href="https://acarolmourad-commits.github.io/asf-bemestar/">🧘 Bem-estar</a><a href="https://acarolmourad-commits.github.io/asf-treino/">🏋️ Treino</a><a href="https://acarolmourad-commits.github.io/asf-mental/">🧠 Mental</a></nav><header><h1>😴 Sono da surfista</h1><p>Registre suas noites e descubra o quanto o sono rende no mar.</p></header><main class="wrap"><div class="card"><h2>Como foi a noite?</h2><div class="row"><input type="number" id="h" min="0" max="14" step="0.5" placeholder="Horas"> <select id="q"><option value="1">Ruim</option><option value="2" selected>Ok</option><option value="3">Ótima</option></select> <button class="salvar" onclick="salvar()">Registrar</button></div></div><div class="card"><h2>Últimas 7 noites</h2><div class="bars" id="bars"></div><div class="muted" id="msg">Registre a primeira noite acima.</div></div><p class="muted">Boa recuperação também passa por <a href="https://acarolmourad-commits.github.io/asf-nutricao/" style="color:var(--p)">nutrição</a> e <a href="https://acarolmourad-commits.github.io/asf-yoga/" style="color:var(--p)">yoga</a>.</p></main><footer>🌊 ASF · <a href="https://acarolmourad-commits.github.io/" style="color:var(--p)">Hub de apps</a></footer><script>const K='asf-sono-v1';let d=JSON.parse(localStorage.getItem(K)||'[]');function render(){const b=document.getElementById('bars');b.innerHTML='';d.slice(-7).forEach(x=>{const el=document.createElement('div');el.style.height=(x.h/10*100)+'%';el.title=x.h+'h ('+['ruim','ok','ótima'][x.q-1]+')';b.appendChild(el);});if(d.length){const m=d.slice(-7).reduce((s,x)=>s+x.h,0)/Math.min(7,d.length);document.getElementById('msg').textContent='Média: '+m.toFixed(1)+'h por noite '+(m>=8?'— recuperação excelente! 🌟':m>=7?'— boa, dá para melhorar 💪':'— atenção: sono curto derruba performance ⚠️');}}function salvar(){const h=parseFloat(document.getElementById('h').value);if(!h)return;d.push({h:Math.min(14,h),q:+document.getElementById('q').value});localStorage.setItem(K,JSON.stringify(d));render();}render();</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASF Sono — ASF</title>
+<meta name="description" content="Rastreador de sono e recuperação para performance no surf">
+<style>
+:root{--rosa:#ff4d8d;--roxo:#7b2ff7;--areia:#fff5ec;--mar:#00c2cb}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:linear-gradient(160deg,#fff5ec,#ffe3f1 60%,#e0f7fa);min-height:100vh;color:#333}
+header{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;padding:2rem 1rem;text-align:center}
+header h1{font-size:2rem} header p{opacity:.9;margin-top:.4rem}
+nav{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.8rem;background:#fff;box-shadow:0 2px 8px #0001;position:sticky;top:0;z-index:10}
+nav a{background:var(--areia);border:1px solid #ffd3e6;color:#c2185b;padding:.3rem .7rem;border-radius:20px;font-size:.78rem;text-decoration:none}
+main{max-width:760px;margin:1.5rem auto;padding:0 1rem}
+.card{background:#fff;border-radius:16px;padding:1.4rem;box-shadow:0 4px 16px #7b2ff720;margin-bottom:1.2rem}
+.card h2{color:var(--roxo);margin-bottom:.6rem;font-size:1.2rem}
+button{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;border:none;padding:.6rem 1.2rem;border-radius:24px;font-size:1rem;cursor:pointer;margin:.2rem 0}
+input,select,textarea{padding:.5rem;border:1px solid #ddd;border-radius:10px;width:100%;margin:.3rem 0;font-size:1rem}
+.xp{position:fixed;bottom:1rem;right:1rem;background:#fff;border:2px solid var(--rosa);border-radius:24px;padding:.4rem 1rem;font-weight:bold;color:var(--roxo);box-shadow:0 4px 12px #0002}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
+</style>
+</head>
+<body>
+<header><h1>😴 ASF Sono</h1><p>Rastreador de sono e recuperação para performance no surf</p></header>
+<nav><a href="https://acarolmourad-commits.github.io/">🌐 Hub ASF</a>
+<a href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ ASF App</a>
+<a href="https://acarolmourad-commits.github.io/asf-ranking/">🏆 Ranking</a>
+<a href="https://acarolmourad-commits.github.io/asf-bemestar/">Bem-estar</a>
+<a href="https://acarolmourad-commits.github.io/asf-mental/">Mental</a>
+<a href="https://acarolmourad-commits.github.io/asf-nutricao/">Nutrição</a></nav>
+<main>
+<div class="card"><h2>😴 Como dormiu essa noite?</h2>
+<label>Horas de sono</label><input id="h" type="number" placeholder="8">
+<label>Qualidade</label><select id="q"><option>😴 Profundo</option><option>😐 Ok</option><option>😵 Ruim</option></select>
+<button onclick="reg()">Registrar (+5 XP)</button></div>
+<div class="card"><h2>📊 Sua semana</h2><div id="graf"></div><p id="msg" style="margin-top:.6rem;font-weight:bold"></p></div>
+<div class="card"><h2>🌙 Sono = performance</h2><p>Sessão de amanhecer só vale a pena com sono em dia. Combine com <a href='https://acarolmourad-commits.github.io/asf-bemestar/'>ASF Bem-estar</a> e <a href='https://acarolmourad-commits.github.io/asf-goldenhour/'>Golden Hour</a>.</p></div>
+<div class="card"><h2>🌐 Ecossistema ASF</h2><p>Ganhe XP aqui e veja seu progresso no <a href="https://acarolmourad-commits.github.io/asf-ranking/">ASF Ranking</a>. Explore tudo no <a href="https://acarolmourad-commits.github.io/">Hub ASF</a>.</p></div>
+</main>
+<div class="xp">⭐ XP: <span id="xp">0</span></div>
+<footer>ASF — Associação de Surf Feminino · <a href="https://acarolmourad-commits.github.io/asf-app/">asf-app</a></footer>
+<script>
+const XP=()=>parseInt(localStorage.getItem('asf_xp')||'0');
+function addXP(n){localStorage.setItem('asf_xp',XP()+n);document.getElementById('xp').textContent=XP();}
+document.getElementById('xp').textContent=XP();
+function render(){const l=JSON.parse(localStorage.getItem('asf_sono')||'[]');document.getElementById('graf').innerHTML=l.length?l.slice(-7).map(x=>`<div style="display:flex;align-items:center;gap:.5rem;margin:.3rem 0"><span style="width:70px;font-size:.75rem">${x.d}</span><div style="height:18px;border-radius:9px;background:linear-gradient(90deg,var(--roxo),var(--mar));width:${Math.min(x.h,10)*10}%"></div><b>${x.h}h</b></div>`).join(''):'Sem registros ainda.';const ult=l.slice(-7);if(ult.length>=3){const m=ult.reduce((a,x)=>a+x.h,0)/ult.length;document.getElementById('msg').textContent=m>=7?'💜 Média ótima ('+m.toFixed(1)+'h)! Corpo pronto pro mar.':'⚠️ Média de '+m.toFixed(1)+'h — durma mais pra render no surf.';}}window.reg=()=>{const h=parseFloat(document.getElementById('h').value);if(!h)return;const l=JSON.parse(localStorage.getItem('asf_sono')||'[]');l.push({h,q:document.getElementById('q').value,d:new Date().toLocaleDateString('pt-BR',{weekday:'short'})});localStorage.setItem('asf_sono',JSON.stringify(l));render();addXP(5);};render();
+</script>
+</body>
+</html>
