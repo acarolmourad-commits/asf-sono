@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASF Sono — Recuperação e sono da surfista</title>
+<meta name="description" content="Rastreie sono e recuperação para render mais no mar. Score diário de prontidão. Satélite do app ASF.">
+<link rel="canonical" href="https://acarolmourad-commits.github.io/asf-sono/">
+<style>body{font-family:system-ui,sans-serif;margin:0;background:#0c1a2e;color:#e0f2fe}header{background:#1e3a8a;color:#fff;padding:2rem;text-align:center}nav{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;padding:1rem;background:#16233d}nav a{color:#93c5fd;text-decoration:none;font-size:.85rem}main{max-width:640px;margin:2rem auto;padding:0 1rem}.card{background:#16233d;border-radius:16px;padding:1.5rem;margin-bottom:1rem}input,select{width:100%;padding:.6rem;margin:.3rem 0;border:1px solid #3b82f6;border-radius:8px;background:#0c1a2e;color:#e0f2fe;box-sizing:border-box}button{background:#3b82f6;color:#fff;border:0;border-radius:9999px;padding:.7rem 1.4rem;font-weight:700;cursor:pointer}#score{font-size:3rem;text-align:center}.row{display:flex;justify-content:space-between;border-bottom:1px solid #1e3a8a;padding:.4rem}footer{text-align:center;padding:2rem;color:#64748b}</style>
+</head>
+<body>
+<header><h1>ASF Sono 😴🌊</h1><p>Recuperação é treino invisível</p></header>
+<nav id="net"></nav>
+<main>
+<div class="card"><h2>📝 Registrar noite</h2>
+<input id="horas" type="number" step="0.5" min="0" max="14" placeholder="Horas de sono (ex: 7.5)">
+<select id="qual"><option value="3">Qualidade: ótima 😴</option><option value="2">Boa 🙂</option><option value="1">Ruim 😖</option></select>
+<select id="energia"><option value="3">Energia ao acordar: alta ⚡</option><option value="2">Média 🔋</option><option value="1">Baixa 🪫</option></select>
+<button onclick="reg()">Salvar</button></div>
+<div class="card" id="res" style="display:none"><h2>Prontidão para o mar</h2><div id="score"></div><p id="verdict"></p></div>
+<div class="card"><h2>📊 Últimas noites</h2><div id="hist"></div></div>
+<div class="card"><p>💡 Sono ruim + mar grande = risco. Confira o <a href="https://acarolmourad-commits.github.io/asf-alerta/" style="color:#93c5fd">ASF Alerta</a>, faça <a href="https://acarolmourad-commits.github.io/asf-respira/" style="color:#93c5fd">Respira</a> antes de dormir e cuide da <a href="https://acarolmourad-commits.github.io/asf-nutricao/" style="color:#93c5fd">Nutrição</a>.</p></div>
+</main>
+<footer>ASF Sono — satélite do <a href="https://acarolmourad-commits.github.io/asf-app/" style="color:#93c5fd">app ASF</a></footer>
+<script>
+const sites=[["asf-app","App ASF"],["asf-treino","Treino"],["asf-mental","Mental"],["asf-bemestar","Bem-Estar"],["asf-nutricao","Nutrição"],["asf-respira","Respira"],["asf-apnea","Apneia"],["asf-diario","Diário"],["asf-alerta","Alerta"],["asf-previsao","Previsão"]];
+document.getElementById('net').innerHTML=sites.map(s=>`<a href="https://acarolmourad-commits.github.io/${s[0]}/">${s[1]}</a>`).join('');
+const K='asf-sono';
+function load(){return JSON.parse(localStorage.getItem(K)||'[]');}
+function reg(){const h=parseFloat(document.getElementById('horas').value);if(!h)return alert('Informe as horas!');const q=+document.getElementById('qual').value,e=+document.getElementById('energia').value;
+const s=Math.min(100,Math.round((h/8)*50+((q+e)/6)*50));const l=load();l.unshift({d:new Date().toLocaleDateString('pt-BR'),h,q,e,s});localStorage.setItem(K,JSON.stringify(l.slice(0,14)));
+document.getElementById('res').style.display='block';document.getElementById('score').textContent=s+'/100';
+document.getElementById('verdict').textContent=s>=80?'🌊 Corpo pronto — vai pro mar!':s>=55?'⚠️ Recuperação parcial — sessão leve hoje.':'🛋️ Priorize descanso. Yoga e respiração ajudam.';
+render();}
+function render(){const l=load();document.getElementById('hist').innerHTML=l.length?l.map(x=>`<div class="row"><span>${x.d}</span><span>${x.h}h · score ${x.s}</span></div>`).join(''):'<p>Nenhuma noite registrada ainda.</p>';}
+render();
+</script>
+</body>
+</html>
