@@ -3,84 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASF Sono — Sono e recuperação para surfistas</title>
-<meta name="description" content="Rastreador de sono e recuperação: registre suas noites e veja médias semanais para performar melhor no surf. Satélite do app ASF.">
+<title>ASF Sono — Recuperação e sono para surfistas</title>
+<meta name="description" content="Tracker de sono e recuperação para surfistas: registre horas e qualidade, receba dicas e evolua. Satélite do app ASF.">
 <style>
 :root{--rosa:#ff4d8d;--roxo:#7b2ff7;--areia:#fff5ec;--mar:#00c2cb}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
-body{background:linear-gradient(160deg,#0f2027,#2c5364);min-height:100vh;color:#eee}
-header{background:linear-gradient(90deg,#203a43,#2c5364);color:#fff;padding:2rem 1rem;text-align:center;border-bottom:2px solid var(--roxo)}
+body{background:linear-gradient(160deg,#ede7f6,#e3f2fd 60%,#e0f7fa);min-height:100vh;color:#333}
+header{background:linear-gradient(90deg,#4527a0,#0288d1);color:#fff;padding:2rem 1rem;text-align:center}
 header h1{font-size:2rem}header p{opacity:.9;margin-top:.4rem}
-nav{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.8rem;background:#16222a;position:sticky;top:0;z-index:10}
-nav a{background:#203a43;border:1px solid #355;color:#9fd8e8;padding:.3rem .7rem;border-radius:20px;font-size:.78rem;text-decoration:none}
-nav a:hover{background:var(--roxo);color:#fff}
+nav{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.8rem;background:#fff;box-shadow:0 2px 8px #0001;position:sticky;top:0;z-index:10}
+nav a{background:var(--areia);border:1px solid #ffd3e6;color:#c2185b;padding:.3rem .7rem;border-radius:20px;font-size:.78rem;text-decoration:none}
+nav a:hover{background:var(--rosa);color:#fff}
 main{max-width:640px;margin:1.5rem auto;padding:0 1rem}
-.card{background:#1b2f38;border-radius:16px;padding:1.4rem;box-shadow:0 4px 16px #0004;margin-bottom:1.2rem}
-.card h2{color:#9fd8e8;margin-bottom:.6rem;font-size:1.2rem}
-label{display:block;font-size:.85rem;color:#aac;margin-top:.6rem}
-input{width:100%;padding:.55rem;border:1px solid #345;border-radius:10px;background:#0f2027;color:#fff;font-size:1rem;margin-top:.2rem}
-button{background:linear-gradient(90deg,var(--rosa),var(--roxo));color:#fff;border:none;padding:.7rem 1.4rem;border-radius:24px;font-size:1rem;cursor:pointer;margin-top:1rem}
-.stats{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;text-align:center}
-.stats div{background:#0f2027;border-radius:12px;padding:.7rem 1.1rem}
-.stats strong{display:block;font-size:1.5rem;color:#7fe0c3}
-.reg{display:flex;justify-content:space-between;background:#0f2027;border-radius:10px;padding:.7rem .9rem;margin:.4rem 0;font-size:.9rem}
-.reg .del{background:none;border:none;color:var(--rosa);cursor:pointer;font-size:1rem;padding:0}
-.dica{background:#12303a;border-left:4px solid var(--mar);border-radius:0 10px 10px 0;padding:.8rem 1rem;font-size:.9rem;margin-top:.6rem}
+.card{background:#fff;border-radius:16px;padding:1.4rem;box-shadow:0 4px 16px #7b2ff720;margin-bottom:1.2rem}
+.card h2{color:#4527a0;margin-bottom:.6rem;font-size:1.2rem}
+button{background:linear-gradient(90deg,#4527a0,#0288d1);color:#fff;border:none;padding:.7rem 1.4rem;border-radius:24px;font-size:1rem;cursor:pointer}
+label{display:block;font-size:.85rem;color:#666;margin-top:.6rem;text-align:left}
+input,select{padding:.5rem;border:1px solid #ddd;border-radius:10px;width:100%;font-size:1rem;margin-top:.2rem}
+.stats{display:flex;gap:1rem;justify-content:center;text-align:center;flex-wrap:wrap}
+.stats div{background:var(--areia);border-radius:12px;padding:.7rem 1.1rem}
+.stats strong{display:block;font-size:1.5rem;color:#4527a0}
+.reg{background:var(--areia);border-radius:10px;padding:.6rem .9rem;margin:.4rem 0;font-size:.9rem;display:flex;justify-content:space-between}
+.reg button{background:none;border:none;color:var(--rosa);cursor:pointer;font-size:1rem}
+.dica{background:#e8f5e9;border-left:4px solid #43a047;border-radius:8px;padding:1rem;font-size:.9rem;margin-top:1rem;text-align:left}
 .xp{position:fixed;bottom:1rem;right:1rem;background:#fff;border:2px solid var(--rosa);border-radius:24px;padding:.4rem 1rem;font-weight:bold;color:var(--roxo);box-shadow:0 4px 12px #0002}
-footer{text-align:center;padding:2rem;font-size:.8rem;color:#688}
+footer{text-align:center;padding:2rem;font-size:.8rem;color:#888}
 footer a{color:var(--rosa)}
 </style>
 </head>
 <body>
-<header><h1>😴 ASF Sono</h1><p>Sono é o treino invisível da surfista</p></header>
+<header><h1>😴 ASF Sono</h1><p>Sono é treino invisível — recupere e surfe melhor</p></header>
 <nav>
 <a href="https://acarolmourad-commits.github.io/asf-app/">🏄‍♀️ ASF App</a>
 <a href="https://acarolmourad-commits.github.io/asf-treino/">Treino</a>
 <a href="https://acarolmourad-commits.github.io/asf-yoga/">Yoga</a>
-<a href="https://acarolmourad-commits.github.io/asf-bemestar/">Bem-estar</a>
-<a href="https://acarolmourad-commits.github.io/asf-mental/">Mental</a>
 <a href="https://acarolmourad-commits.github.io/asf-nutricao/">Nutrição</a>
+<a href="https://acarolmourad-commits.github.io/asf-mental/">Mental</a>
+<a href="https://acarolmourad-commits.github.io/asf-bemestar/">Bem-estar</a>
 <a href="https://acarolmourad-commits.github.io/asf-diario/">Diário</a>
 <a href="https://acarolmourad-commits.github.io/asf-ranking/">Ranking</a>
+<a href="https://acarolmourad-commits.github.io/asf-desafio/">Desafio 30</a>
 </nav>
 <main>
-<div class="card"><h2>Suas médias 📊</h2><div class="stats">
-<div><strong id="media">–</strong>média/noite</div><div><strong id="noites">0</strong>noites</div><div><strong id="qual">–</strong>qualidade</div>
+<div class="card"><h2>Suas médias 🌙</h2><div class="stats">
+<div><strong id="mH">–</strong>h/noite</div><div><strong id="mQ">–</strong>qualidade</div><div><strong id="n">0</strong>noites</div>
 </div></div>
-<div class="card"><h2>Registrar noite 🌙</h2>
-<label>Dormi às</label><input type="time" id="dormi" value="22:30">
-<label>Acordei às</label><input type="time" id="acordei" value="06:30">
-<label>Qualidade (1–5)</label><input type="number" id="q" min="1" max="5" value="4">
-<button onclick="salvar()">Salvar noite</button></div>
+<div class="card"><h2>Registrar noite 🛌</h2>
+<label>Data</label><input type="date" id="data">
+<label>Horas dormidas</label><input type="number" id="horas" step="0.5" min="0" max="14" placeholder="7.5">
+<label>Qualidade</label><select id="qual"><option value="5">😴 Ótima</option><option value="4">🙂 Boa</option><option value="3" selected>😐 Regular</option><option value="2">😖 Ruim</option><option value="1">🥱 Péssima</option></select>
+<button onclick="salvar()" style="margin-top:.9rem">Salvar noite (+5 XP)</button>
+<div class="dica" id="dica"></div></div>
 <div class="card"><h2>Histórico 📋</h2><div id="lista"></div></div>
-<div class="card"><h2>Dicas de recuperação 🌊</h2>
-<div class="dica">🏄‍♀️ Surf cedo? Durma 30 min mais cedo na véspera — a remada rende muito mais.</div>
-<div class="dica">📵 Tela apagada 30 min antes de dormir acelera o sono profundo (fase reparadora).</div>
-<div class="dica">🧘‍♀️ A rotina de respiração do <a href="https://acarolmourad-commits.github.io/asf-yoga/" style="color:#9fd8e8">ASF Yoga</a> ajuda a pegar no sono.</div></div>
+<div class="card"><h2>Por que importa? 🧠</h2><p style="font-size:.9rem;text-align:left">O sono consolida a memória motora — o pop-up que você treinou no <a href="https://acarolmourad-commits.github.io/asf-popup/">ASF Pop-up</a> só vira automático depois de uma boa noite. Dormir &lt;6h reduz tempo de reação e aumenta risco de lesão no mar. Combine com a <a href="https://acarolmourad-commits.github.io/asf-nutricao/">Nutrição</a> e registre sessões no <a href="https://acarolmourad-commits.github.io/asf-diario/">Diário</a>.</p></div>
 </main>
 <div class="xp">⭐ XP: <span id="xp">0</span></div>
 <footer>ASF — Associação de Surf Feminino · Feito com 🌊 e 💜 · <a href="https://acarolmourad-commits.github.io/asf-app/">asf-app</a></footer>
 <script>
-let regs=JSON.parse(localStorage.getItem('asfsono')||'[]');
 const XP=()=>parseInt(localStorage.getItem('asf_xp')||'0');
 function addXP(n){localStorage.setItem('asf_xp',XP()+n);document.getElementById('xp').textContent=XP();}
 document.getElementById('xp').textContent=XP();
-function salvar(){
- const d=document.getElementById('dormi').value,a=document.getElementById('acordei').value,q=+document.getElementById('q').value;
- if(!d||!a)return;
- let mins=(parseInt(a)*60+parseInt(a.split(':')[1]))-(parseInt(d)*60+parseInt(d.split(':')[1]));
- if(mins<=0)mins+=1440;
- regs.unshift({data:new Date().toLocaleDateString('pt-BR'),horas:Math.round(mins/6)/10,q});
- localStorage.setItem('asfsono',JSON.stringify(regs));addXP(5);render();
-}
+let regs=JSON.parse(localStorage.getItem('asfsono')||'[]');
+document.getElementById('data').valueAsDate=new Date();
+const DICAS=['Durma e acorde em horários parecidos todos os dias','Tela off 1h antes de deitar','Quarto escuro e fresco melhora o sono profundo','Cafeína só até 8h antes de dormir','Soneca de 20min pós-surf acelera a recuperação'];
+document.getElementById('dica').textContent='💡 '+DICAS[new Date().getDate()%DICAS.length];
+function salvar(){const h=+document.getElementById('horas').value,d=document.getElementById('data').value;
+ if(!h||!d){alert('Preencha data e horas');return;}
+ regs.unshift({d,h,q:+document.getElementById('qual').value});
+ localStorage.setItem('asfsono',JSON.stringify(regs));addXP(5);render();}
 function del(i){regs.splice(i,1);localStorage.setItem('asfsono',JSON.stringify(regs));render();}
-function render(){
- const n=regs.length,m=n?regs.reduce((s,r)=>s+r.horas,0)/n:0,qm=n?regs.reduce((s,r)=>s+r.q,0)/n:0;
- document.getElementById('media').textContent=n?m.toFixed(1)+'h':'–';
- document.getElementById('noites').textContent=n;
- document.getElementById('qual').textContent=n?'⭐'.repeat(Math.round(qm)):'–';
- document.getElementById('lista').innerHTML=regs.map((r,i)=>`<div class="reg"><span>${r.data} · ${r.horas}h · ${'⭐'.repeat(r.q)}</span><button class="del" onclick="del(${i})">🗑</button></div>`).join('')||'<p style="color:#688">Nenhuma noite registrada.</p>';
-}
+function render(){const n=regs.length;
+ document.getElementById('n').textContent=n;
+ document.getElementById('mH').textContent=n?(regs.reduce((s,r)=>s+r.h,0)/n).toFixed(1):'–';
+ document.getElementById('mQ').textContent=n?(regs.reduce((s,r)=>s+r.q,0)/n).toFixed(1)+'/5':'–';
+ const em=['','🥱','😖','😐','🙂','😴'];
+ document.getElementById('lista').innerHTML=regs.map((r,i)=>`<div class="reg"><span>${r.d} · ${r.h}h ${em[r.q]}</span><button onclick="del(${i})">🗑</button></div>`).join('')||'<p style="color:#999;font-size:.85rem">Nenhuma noite registrada.</p>';}
 render();
 </script>
 </body>
